@@ -87,7 +87,7 @@ def sync_collection(client, stream, state, projection):
         last_id_fetched_type = singer.get_bookmark(state,
                                                    stream['tap_stream_id'],
                                                    'last_id_fetched_type')
-        find_filter['$gte'] = common.string_to_class(last_id_fetched, last_id_fetched_type)
+        find_filter['$gt'] = common.string_to_class(last_id_fetched, last_id_fetched_type)
 
     query_message = 'Querying {} with:\n\tFind Parameters: {}'.format(
         stream['tap_stream_id'],
